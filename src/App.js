@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import FullView from "./components/FullView";
+import Thumbnails from "./components/Thumbnails";
+import { getRandom, getSingleImage, getRange } from "./nasaApod";
+
+
+//getSingleImage('dd').then(data => console.log(data));
+//getRandom(5).then(data => console.log(data));
 
 function App() {
+  const [apods, setApods] = useState([]);
+
+  const selectImage = (apod) => {
+
+  };
+
+  useEffect(() => {
+    getRange(-10).then(data => {
+      setApods(data);
+    }).catch(reason => {
+      console.log(reason);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+    <div>
+      <FullView />
+      <Thumbnails apods={apods} />
     </div>
   );
 }
