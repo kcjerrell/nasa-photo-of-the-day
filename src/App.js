@@ -9,8 +9,13 @@ import appTheme from './theme';
 import { THUMB_PAGE_COUNT } from "./constants";
 
 
-//getSingleImage('dd').then(data => console.log(data));
-//getRandom(5).then(data => console.log(data));
+/* *************************************************
+I don't know this will ever be looked at, but I just wanted to mention that there's a number
+of things I would like to change about the design/functioning of this. When I first started,
+I wasn't familiar enough with React or the NASA API to avoid or work around the image loading
+and element-rendering issues, so sometimes the app feels unresponsive, or unecessarily reloads
+or rerenders thumbnails.
+***************************************************/
 
 const ScreenContainer = styled.div`
   top: 0;

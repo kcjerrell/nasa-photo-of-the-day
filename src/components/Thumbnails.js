@@ -4,9 +4,6 @@ import Thumbnail from './Thumbnail';
 import { THUMB_PAGE_COUNT } from "../constants";
 
 const StyledThumbnails = styled.div`
-  /* position: fixed;
-  top: 0;
-  bottom: 0; */
 	width: 15%;
   overflow-y: auto;
 	overflow-x: hidden;
@@ -14,9 +11,9 @@ const StyledThumbnails = styled.div`
   border: black 2px solid;
 	flex-shrink: 0;
 	display: flex;
-flex-direction: column;
-align-items: stretch;
-justify-content:  space-evenly;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content:  space-evenly;
 `;
 
 const MoreBack = styled.div`
