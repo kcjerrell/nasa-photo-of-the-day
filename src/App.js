@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import "./App.css";
 import FullView from "./components/FullView";
 import Thumbnails from "./components/Thumbnails";
+import Info from "./components/Info";
 import { getRandom, getSingleImage, getRange } from "./nasaApod";
 import appTheme from './theme';
 import { THUMB_PAGE_COUNT } from "./constants";
@@ -16,7 +17,7 @@ const ScreenContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-
+position: fixed;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -42,7 +43,7 @@ function App() {
 
   useEffect(() => {
     getRange(offset * -1 - THUMB_PAGE_COUNT, offset * -1).then(data => {
-      setApods(data);
+      setApods(data.filter(d => d.media_type === "image"));
     }).catch(reason => {
       console.log(reason);
     });
@@ -54,10 +55,14 @@ function App() {
 
   return (
     <ThemeProvider theme={appTheme}>
-      <div>
-        <FullView selected={selected} />
+      <ScreenContainer>
         <Thumbnails apods={apods} selectImage={selectImage} selected={selected} changeOffset={changeOffset} />
-      </div>
+        <FullView selected={selected} >hello</FullView>
+      </ScreenContainer>
+      <div style={{ height: '90vh'}}></div>
+      { selected &&
+        <Info apod={selected} />
+      }
     </ThemeProvider>
   );
 }

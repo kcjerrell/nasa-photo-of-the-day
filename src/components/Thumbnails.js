@@ -4,14 +4,15 @@ import Thumbnail from './Thumbnail';
 import { THUMB_PAGE_COUNT } from "../constants";
 
 const StyledThumbnails = styled.div`
-  position: fixed;
+  /* position: fixed;
   top: 0;
-  bottom: 0;
+  bottom: 0; */
 	width: 15%;
   overflow-y: auto;
 	overflow-x: hidden;
   background-color: #222222;
   border: black 2px solid;
+	flex-shrink: 0;
 	display: flex;
 flex-direction: column;
 align-items: stretch;
