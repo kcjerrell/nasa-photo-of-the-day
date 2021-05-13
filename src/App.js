@@ -10,9 +10,10 @@ import { getRandom, getSingleImage, getRange } from "./nasaApod";
 
 function App() {
   const [apods, setApods] = useState([]);
+  const [selected, setSelected] = useState();
 
   const selectImage = (apod) => {
-
+    setSelected(apod);
   };
 
   useEffect(() => {
@@ -25,8 +26,8 @@ function App() {
 
   return (
     <div>
-      <FullView />
-      <Thumbnails apods={apods} />
+      <FullView selected={selected}/>
+      <Thumbnails apods={apods} selectImage={selectImage} />
     </div>
   );
 }

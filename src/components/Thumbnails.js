@@ -2,7 +2,7 @@ import React from 'react';
 import Thumbnail from './Thumbnail';
 
 const Thumbnails = (props) => {
-	const { apods, select, selected } = props;
+	const { apods, selectImage, selected } = props;
 
 	const loadMore = () => {
 
@@ -12,7 +12,7 @@ const Thumbnails = (props) => {
 		<div className="sidebar">
 				{
 					apods.map(apod => (
-						<Thumbnail apod={apod} select={select} isSelected={selected === apod} />
+						<Thumbnail apod={apod} selectImage={selectImage} isSelected={selected === apod} />
 					))
 				}
 				<Thumbnail select={loadMore} isSelected={false} />

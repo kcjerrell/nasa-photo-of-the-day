@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Thumbnail = (props) => {
-	const { apod, select, isSelected, loadMore } = props;
+	const { apod, selectImage, isSelected, loadMore } = props;
 
 	const img_onClick = () => {
-		select(apod);
+		selectImage(apod);
 	};
 
 	const style = {};
@@ -25,7 +25,7 @@ const Thumbnail = (props) => {
 	else
 		return (
 			<div className="thumbnail-container" style={{ height: 'auto' }}>
-				<div className="thumbnail-image" onClick={() => img_onClick()}><h3>Load more...</h3></div>
+				<div className="thumbnail-image" onClick={() => loadMore()}><h3>Load more...</h3></div>
 			</div>
 		);
 }
