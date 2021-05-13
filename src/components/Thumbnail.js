@@ -1,4 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const ThumbnailContainer = styled.div`
+  border-width: 1px;
+  border-color: ${props => props.isSelected ? '#bbbbbb' : 'black'};
+  border-style: solid;
+  /* aspect-ratio: 1; */
+	/* height: 18%; */
+flex-grow: 1;
+	margin: 0px;
+	background-size: cover;
+	background-position: center;
+	background-image: url(${props => props.url});
+
+	&:hover {
+		border-color: white;
+	}
+`;
 
 const Thumbnail = (props) => {
 	const { apod, selectImage, isSelected, loadMore } = props;
@@ -7,19 +25,9 @@ const Thumbnail = (props) => {
 		selectImage(apod);
 	};
 
-	const style = {};
-
-	if (apod)
-		style.backgroundImage = `url("${apod.url}")`;
-
 	if (apod)
 		return (
-
-			<div className="thumbnail-container">
-				<div style={style} cursor='pointer'
-					onClick={() => img_onClick()} alt={apod.title}
-					className={isSelected ? "thumbnail-image thumbnail-selected" : "thumbnail-image"} ></div>
-			</div>
+			<ThumbnailContainer isSelected={isSelected} url={apod.url} onClick={() => img_onClick()} alt={apod.title} />
 		);
 
 	else

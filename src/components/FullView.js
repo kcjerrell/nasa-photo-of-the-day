@@ -1,4 +1,10 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
+
+const StyledFullView = styled.div`
+	flex-grow: 1;
+object-fit: contain;
+`;
 
 const FullView = (props) => {
 	const { selected } = props;

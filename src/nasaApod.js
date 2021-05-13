@@ -14,6 +14,7 @@ export async function getSingleImage(date = null) {
  * @returns
  */
 export async function getRange(startOffset, endOffset = 0) {
+	console.log(`range requested: ${startOffset} - ${endOffset}`);
 	const startDate = addDays(Date.now(), startOffset);
 	const endDate = addDays(Date.now(), endOffset);
 	return await getRequest({ endDate, startDate });
