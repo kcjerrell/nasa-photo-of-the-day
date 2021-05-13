@@ -11,23 +11,30 @@ import { getRandom, getSingleImage, getRange } from "./nasaApod";
 function App() {
   const [apods, setApods] = useState([]);
   const [selected, setSelected] = useState();
+  const [startOffset, setStartOffset] = useState(-9);
 
   const selectImage = (apod) => {
     setSelected(apod);
   };
 
+  const loadMore = () => {
+    setStartOffset(startOffset - 10);
+  };
+
   useEffect(() => {
-    getRange(-10).then(data => {
-      setApods(data);
+    getRange(startOffset, startOffset + 9).then(data => {
+      setApods(apods.concat(data));
+      if (!selected)
+        setSelected(apods[0]);
     }).catch(reason => {
       console.log(reason);
     });
-  }, []);
+  }, [startOffset]);
 
   return (
     <div>
       <FullView selected={selected}/>
-      <Thumbnails apods={apods} selectImage={selectImage} />
+      <Thumbnails apods={apods} selectImage={selectImage} selected={selected} loadMore={loadMore}/>
     </div>
   );
 }
